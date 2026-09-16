@@ -1,0 +1,130 @@
+:root {
+  --content-width: 550px;
+  --player-width: 322px;
+  --text: #050505;
+  --muted: #65676b;
+  --line: #e4e6eb;
+  --facebook: #1877f2;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: #fff; color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+button, textarea { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid #1877f2; outline-offset: 3px; }
+[hidden] { display: none !important; }
+.svg-library { position: absolute; width: 0; height: 0; overflow: hidden; }
+.page-section { width: 100%; padding-left: 13px; padding-right: 13px; }
+.content-width { width: 100%; max-width: var(--content-width); margin-left: auto; margin-right: auto; }
+.topbar { padding-top: 8px; padding-bottom: 8px; }
+.topbar-inner, .topbar-group { display: flex; align-items: center; }
+.topbar-inner { justify-content: space-between; }
+.topbar-group { gap: 6.4px; }
+.round-icon { display: grid; place-items: center; width: 32px; height: 32px; padding: 8px; border-radius: 50%; }
+.round-icon svg { display: block; width: 16px; height: 16px; fill: currentColor; }
+.facebook-icon { color: #fff; background: #2563eb; }
+.gray-icon { color: #050505; background: #e4e6eb; }
+svg.stroke-icon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.post-head { padding-top: 10px; padding-bottom: 10px; }
+.post-head-inner { display: flex; align-items: center; gap: 8px; }
+.profile-link { display: block; flex: 0 0 32px; }
+.post-avatar { display: block; width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.post-author { min-width: 0; flex: 1; }
+.post-author h1 { margin: 0 0 1px; font-size: 12px; line-height: 1.3; font-weight: 700; }
+.post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; color: var(--muted); font-size: 10.4px; line-height: 1.3; }
+.post-meta time { white-space: nowrap; }
+.post-meta svg { width: 10px; height: 10px; }
+.dots { width: 16px; height: 16px; flex: 0 0 16px; }
+.dots svg { width: 100%; height: 100%; fill: currentColor; }
+.caption p { margin-top: 0; margin-bottom: 0; font-size: 12px; line-height: 1.4; }
+.caption strong { font-weight: 700; }
+/* Compensa as linhas da headline para manter o vídeo próximo à posição do print. */
+.video-section { padding-top: 76px; }
+.video-wrap { display: flex; justify-content: center; }
+.video-player { position: relative; width: min(100%, var(--player-width)); aspect-ratio: 9 / 16; background: #3d85c6; color: #fff; overflow: hidden; }
+.video-player video, .video-player iframe { display: block; width: 100%; height: 100%; border: 0; object-fit: contain; }
+.embed-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; background: #000; }
+/* O vídeo ocupa o quadro sem cortes; a altura responde à proporção da variante ativa. */
+.video-player .embed-stage iframe { display: block; width: 100%; height: var(--embed-height, 100%); min-height: 0; max-width: 100%; max-height: 100%;  }
+.is-playing .embed-stage { opacity: 1; pointer-events: auto; }
+.is-playing { background: #000; }
+.resume-card { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px; }
+.resume-card h2 { margin: 0 0 18px; font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; line-height: 1.25; text-align: center; }
+.resume-options { display: flex; flex-direction: column; gap: 11px; }
+.resume-options button { display: flex; align-items: center; gap: 11px; padding: 0; border: 0; background: none; color: #fff; font: 700 12px/1.2 Arial, Helvetica, sans-serif; text-align: left; }
+.resume-options button:disabled { cursor: wait; opacity: .65; }
+.resume-options svg { display: block; width: 27px; height: 27px; flex: 0 0 27px; fill: none; stroke: #fff; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+.resume-options svg .play-triangle { stroke: none; fill: #fff; }
+.player-status { position: absolute; bottom: 20px; left: 16px; right: 16px; margin: 0; text-align: center; font-size: 12px; line-height: 1.5; }
+.player-status a { color: inherit; text-decoration: underline; }
+.reactions { padding-top: 8px; padding-bottom: 8px; }
+.reaction-inner { display: flex; align-items: center; gap: 18px; }
+.reaction-inner button { display: block; width: 18px; height: 18px; padding: 0; border: 0; color: var(--muted); background: transparent; }
+.reaction-inner svg { display: block; width: 18px; height: 18px; }
+.reaction-inner button[aria-pressed="true"] { color: var(--facebook); }
+.action-feedback { color: var(--muted); font-size: 10px; }
+.comments h2 { margin: 0 0 10px; padding: 11px 0 8px; border-bottom: 1px solid var(--line); font-size: 12px; line-height: 1.3; font-weight: 700; }
+.editorial-note { margin: 0 0 15px; font-size: 10.5px; line-height: 1.45; color: #65676b; }
+.comment { display: flex; gap: 6.5px; margin: 0 0 10px; }
+.comment:last-child { margin-bottom: 0; }
+.avatar { display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; border-radius: 50%; object-fit: cover; color: #53616b; background: #e4e6eb; font-size: 13px; font-weight: 500; }
+.avatar-sage { background: #e0e6dd; color: #586350; }
+.avatar-rose { background: #eddfdc; color: #886d66; }
+.avatar-blue { background: #dee5eb; color: #536779; }
+.avatar-sand { background: #eae4d6; color: #7c745e; }
+.avatar-lilac { background: #e5e0eb; color: #71607f; }
+.comment > .avatar { background-size: cover; background-position: center; background-repeat: no-repeat; color: transparent; }
+#c01 > .avatar { background-image: url("assets/comments/marina-madura.jpg"); background-position: center 14%; }
+#c02 > .avatar { background-image: url("assets/comments/lucas.webp"); }
+#c03 > .avatar { background-image: url("assets/comments/renato.webp"); }
+#c04 > .avatar { background-image: url("assets/comments/helena-madura.jpg"); }
+#c05 > .avatar { background-image: url("assets/comments/rodrigo-maduro.jpg"); }
+#c06 > .avatar { background-image: url("assets/comments/diego.webp"); }
+#c07 > .avatar { background-image: url("assets/comments/fernanda.webp"); }
+#c08 > .avatar { background-image: url("assets/comments/andreia.webp"); }
+#c09 > .avatar { background-image: url("assets/comments/mariana-madura.webp"); }
+#c10 > .avatar { background-image: url("assets/comments/cristina.webp"); }
+#c11 > .avatar { background-image: url("assets/comments/felipe.webp"); }
+#c12 > .avatar { background-image: url("assets/comments/beatriz.webp"); }
+#c13 > .avatar, #c15 > .avatar { background-image: url("assets/comments/adriana-madura.jpg"); }
+#c14 > .avatar { background-image: url("assets/comments/pedro.webp"); }
+#c16 > .avatar { background-image: url("assets/comments/gustavo.webp"); }
+.comment-body { min-width: 0; flex: 1; }
+.comment-name { color: #385898; font-size: 11.2px; line-height: 1.25; font-weight: 600; }
+.comment p { margin: 1px 0 0; color: var(--text); font-size: 11.2px; line-height: 1.4; overflow-wrap: anywhere; }
+.comment-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 4.8px; margin-top: 3px; color: var(--muted); font-size: 9.6px; line-height: 1.3; }
+.comment-actions button { padding: 0; border: 0; color: var(--muted); background: transparent; font-weight: 500; }
+.comment-actions button:hover { text-decoration: underline; }
+.comment-actions button[aria-pressed="true"] { color: var(--facebook); }
+.replies { margin-top: 8px; margin-left: 16px; padding-left: 11px; border-left: 1px solid var(--line); }
+.replies .avatar { width: 26px; height: 26px; flex-basis: 26px; font-size: 11px; }
+.footer { margin-top: 26px; padding: 23px 13px; background: #f0f0f0; text-align: center; }
+.footer p { margin: 0; color: #4a4a4a; font-size: 12px; line-height: 1.3; }
+@media (max-width: 600px) {
+  .page-section { padding-left: 12px; padding-right: 12px; }
+  .post-author h1 { font-size: 14px; }
+  .post-meta { font-size: 11px; }
+  .profile-link { flex-basis: 40px; }
+  .post-avatar { width: 40px; height: 40px; }
+  .caption p, .comments h2 { font-size: 14px; }
+  .video-section { padding-top: 32px; }
+  .comment-name, .comment p { font-size: 13.5px; }
+  .comment-actions { font-size: 11.5px; gap: 6px; margin-top: 4px; }
+    .editorial-note { font-size: 11.5px; }
+  .comment { margin-bottom: 15px; gap: 8px; }
+  .replies { margin-left: 4px; padding-left: 10px; margin-top: 12px; }
+  .replies .avatar { width: 28px; height: 28px; flex-basis: 28px; }
+  }
+@media (max-width: 350px) {
+  .post-author h1 { font-size: 12.5px; }
+  .post-meta { font-size: 10px; gap: 3px; }
+  .resume-card h2 { font-size: 14px; }
+}
+@media print {
+    .comment { break-inside: avoid; }
+}
+
+.offer { padding-top: 16px; padding-bottom: 8px; }
+.checkout-link { display: block; max-width: 322px; margin: 0 auto; padding: 13px 12px; background: #16a34a; color: #fff; text-align: center; font-size: 13px; line-height: 1.4; font-weight: 700; text-decoration: none; }
+.checkout-link:hover { background: #15803d; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
