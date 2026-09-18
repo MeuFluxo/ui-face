@@ -38,8 +38,8 @@ svg.stroke-icon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-li
 .dots svg { width: 100%; height: 100%; fill: currentColor; }
 .caption p { margin-top: 0; margin-bottom: 0; font-size: 12px; line-height: 1.4; }
 .caption strong { font-weight: 700; }
-/* Compensa as linhas da headline para manter o vídeo próximo à posição do print. */
-.video-section { padding-top: 76px; }
+/* Respiro curto entre a headline e o vídeo. */
+.video-section { padding-top: 20px; }
 .video-wrap { display: flex; justify-content: center; }
 .video-player { position: relative; width: min(100%, var(--player-width)); aspect-ratio: 9 / 16; background: #3d85c6; color: #fff; overflow: hidden; }
 .video-player video, .video-player iframe { display: block; width: 100%; height: 100%; border: 0; object-fit: contain; }
@@ -107,7 +107,7 @@ svg.stroke-icon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-li
   .profile-link { flex-basis: 40px; }
   .post-avatar { width: 40px; height: 40px; }
   .caption p, .comments h2 { font-size: 14px; }
-  .video-section { padding-top: 32px; }
+  .video-section { padding-top: 16px; }
   .comment-name, .comment p { font-size: 13.5px; }
   .comment-actions { font-size: 11.5px; gap: 6px; margin-top: 4px; }
     .editorial-note { font-size: 11.5px; }
